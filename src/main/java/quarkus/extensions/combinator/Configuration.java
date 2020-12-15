@@ -1,7 +1,11 @@
 package quarkus.extensions.combinator;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum Configuration {
     ONLY_SUPPORTED_EXTENSIONS("ts.only-supported-extensions", "true"),
+    INCLUDES_COMBINATIONS_ONLY_WITH_EXTENSIONS("ts.includes-combinations-only-with-extensions", ""),
     LIMIT_EXTENSIONS("ts.limit-extensions", "-1"),
     RANDOM_SORT_EXTENSIONS("ts.random-sort-extensions", "true"),
     GROUP_OF("ts.extensions-in-groups-of", "3"),
@@ -21,6 +25,10 @@ public enum Configuration {
 
     public String get() {
         return System.getProperty(key, defaultValue);
+    }
+
+    public List<String> getAsList() {
+        return Arrays.asList(get().split(","));
     }
 
     public Integer getAsInteger() {
