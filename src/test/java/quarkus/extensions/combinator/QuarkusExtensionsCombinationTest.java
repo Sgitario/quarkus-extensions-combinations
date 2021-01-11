@@ -21,7 +21,6 @@ class QuarkusExtensionsCombinationTest {
     void testExtensions(Set<String> extensions) {
         MavenGenerator.withExtensions(extensions)
                 .generate()
-                .compile()
                 .verify()
                 .delete();
     }
